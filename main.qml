@@ -11,7 +11,9 @@ Window {
     height: 480
     visible: true
     title: qsTr("Tashi")
-
+    //benötigte variablen
+    property string operation
+    property string input
     //Testfcn um Aufruf via Knopf zu testen
     function testfcn ()
     {
@@ -27,6 +29,23 @@ Window {
     function splitandpack()
     {
 
+    }
+    //Write Operationstring via Touch
+    function writeOperation(input)
+    {
+        operation = operation + input
+
+        console.log(operation)
+    }
+    function clearOperation()
+    {
+        operation = ""
+
+        console.log(operation)
+    }
+    function deleteLastInput()
+    {
+        console.log(operation)
     }
 
     Row{
@@ -46,6 +65,7 @@ Window {
                 text: qsTr("+")
                 onClicked:{
                     testfcn ()
+                    writeOperation("+")
                 }
 
             }
@@ -57,6 +77,7 @@ Window {
                 text: qsTr("-")
                 onClicked:{
                     testfcn ()
+                    writeOperation("-")
                 }
             }
             MyButton{
@@ -67,6 +88,7 @@ Window {
                 text: qsTr("/")
                 onClicked:{
                     testfcn ()
+                     writeOperation("/")
                 }
             }
             MyButton{
@@ -77,6 +99,7 @@ Window {
                 text: qsTr("*")
                 onClicked:{
                     testfcn ()
+                    writeOperation("*")
                 }
             }
 
@@ -94,6 +117,7 @@ Window {
                         text: qsTr("1")
                         onClicked:{
                             testfcn ()
+                            writeOperation("1")
                         }
                     }
 
@@ -105,6 +129,7 @@ Window {
                         text: qsTr("4")
                         onClicked:{
                             testfcn ()
+                            writeOperation("4")
                         }
                     }
 
@@ -116,6 +141,7 @@ Window {
                         text: qsTr("7")
                         onClicked:{
                             testfcn ()
+                            writeOperation("7")
                         }
                     }
 
@@ -127,6 +153,7 @@ Window {
                         text: qsTr("0")
                         onClicked:{
                             testfcn ()
+                            writeOperation("0")
                         }
                     }
                 }
@@ -143,6 +170,7 @@ Window {
                         text: qsTr("2")
                         onClicked:{
                             testfcn ()
+                            writeOperation("2")
                         }
                     }
 
@@ -154,6 +182,7 @@ Window {
                         text: qsTr("5")
                         onClicked:{
                             testfcn ()
+                            writeOperation("5")
                         }
                     }
 
@@ -166,6 +195,7 @@ Window {
                         text: qsTr("8")
                         onClicked:{
                             testfcn ()
+                            writeOperation("8")
                         }
                     }
 
@@ -177,6 +207,7 @@ Window {
                         text: qsTr("clc")
                         onClicked:{
                             testfcn ()
+                            clearOperation()
                         }
                     }
                 }
@@ -192,6 +223,7 @@ Window {
                         text: qsTr("3")
                         onClicked:{
                             testfcn ()
+                            writeOperation("3")
                         }
                     }
 
@@ -203,6 +235,7 @@ Window {
                         text: qsTr("6")
                         onClicked:{
                             testfcn ()
+                            writeOperation("6")
                         }
                     }
 
@@ -214,6 +247,7 @@ Window {
                         text: qsTr("9")
                         onClicked:{
                             testfcn ()
+                            writeOperation("9")
                         }
                     }
 
@@ -225,6 +259,7 @@ Window {
                         text: qsTr("->")
                         onClicked:{
                             testfcn ()
+                            deleteLastInput()
                         }
                     }
                 }
