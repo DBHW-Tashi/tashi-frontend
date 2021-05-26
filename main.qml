@@ -26,6 +26,7 @@ Window {
     {
         JSON.stringify(operation)
         console.log(JSON.stringify(operation))
+        transmit()
     }
     function transmit()
     {
@@ -293,11 +294,22 @@ Window {
         }
 
         Rectangle{
-           id:display
-           width:600
-           height:420
-           color:"black"
-        }
+                   id:display
+                   width:600
+                   height:420
+                   color:"Lightgrey"
+                   border.color: "Black"
+                   border.width: 2
+
+                   Text{
+                       id: outputText
+                       font.pixelSize: 18
+                       padding: 10
+                       text: operation
+
+                   }
+
+                }
 
     }
 
