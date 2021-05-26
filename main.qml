@@ -14,21 +14,22 @@ Window {
     //benötigte variablen
     property string operation
     property string input
-    //Testfcn um Aufruf via Knopf zu testen
+    //Testfcn um Knopf zu testen
     function testfcn ()
     {
-        console.log("Knopf geht")
+        console.log("-")
 
     }
     //FCN wird aufgerufen um Eingabe zu verschicken
-    function transmit()
-    {
-
-    }
     //FCN zerlegt und verpackt die Eingabe Normgerecht
     function splitandpack()
     {
-
+        JSON.stringify(operation)
+        console.log(JSON.stringify(operation))
+    }
+    function transmit()
+    {
+        console.log("transmit in progress")
     }
     //Write Operationstring via Touch
     function writeOperation(input)
@@ -37,14 +38,17 @@ Window {
 
         console.log(operation)
     }
+    //function - clear screen/string
     function clearOperation()
     {
         operation = ""
 
         console.log(operation)
     }
+    //function delete last Number of operation
     function deleteLastInput()
     {
+        operation = operation.substr(0, operation.length - 1);
         console.log(operation)
     }
 
@@ -55,7 +59,7 @@ Window {
         Column{
 
             id: rechenoperationen
-            spacing: 20
+            spacing: 10
 
             MyButton{
                 id:addition
@@ -152,8 +156,15 @@ Window {
                         enabled: true
                         text: qsTr("0")
                         onClicked:{
-                            testfcn ()
-                            writeOperation("0")
+
+                            if(operation.substr(0)===""){
+                                testfcn ()
+                            }
+                            else{
+                                testfcn ()
+                                writeOperation("0")
+                            }
+
                         }
                     }
                 }
@@ -256,16 +267,28 @@ Window {
                         width: 40
                         height: 40
                         enabled: true
-                        text: qsTr("->")
+                        text: qsTr("<-")
                         onClicked:{
                             testfcn ()
                             deleteLastInput()
                         }
-                    }
+                    }    
+
                 }
 
              }
+            MyButton{
+                id:solve
+                width: 140
+                height: 40
+                enabled: true
+                text: qsTr("=")
+                onClicked:{
+                    testfcn ()
+                    splitandpack()
 
+                }
+            }
 
         }
 
