@@ -62,49 +62,60 @@ Window {
             id: rechenoperationen
             spacing: 10
 
-            MyButton{
-                id:addition
-                width: 125
-                height: 40
-                enabled: true
-                text: qsTr("+")
-                onClicked:{
-                    testfcn ()
-                    writeOperation("+")
-                }
+            Row{
 
-            }
-            MyButton{
-                id:subtraktion
-                width: 125
-                height: 40
-                enabled: true
-                text: qsTr("-")
-                onClicked:{
-                    testfcn ()
-                    writeOperation("-")
+                spacing: 5
+
+                MyButton{
+                    id:addition
+                    width: 65
+                    height: 40
+                    enabled: true
+                    text: qsTr("+")
+                    onClicked:{
+                        testfcn ()
+                        writeOperation("+")
+                    }
+
+                }
+                MyButton{
+                    id:subtraktion
+                    width: 65
+                    height: 40
+                    enabled: true
+                    text: qsTr("-")
+                    onClicked:{
+                        testfcn ()
+                        writeOperation("-")
+                    }
                 }
             }
-            MyButton{
-                id:division
-                width: 125
-                height: 40
-                enabled: true
-                text: qsTr("/")
-                onClicked:{
-                    testfcn ()
-                     writeOperation("/")
+
+            Row{
+
+                spacing: 5
+
+                MyButton{
+                    id:division
+                    width: 65
+                    height: 40
+                    enabled: true
+                    text: qsTr("/")
+                    onClicked:{
+                        testfcn ()
+                         writeOperation("/")
+                    }
                 }
-            }
-            MyButton{
-                id:multiplikation
-                width: 125
-                height: 40
-                enabled: true
-                text: qsTr("*")
-                onClicked:{
-                    testfcn ()
-                    writeOperation("*")
+                MyButton{
+                    id:multiplikation
+                    width: 65
+                    height: 40
+                    enabled: true
+                    text: qsTr("*")
+                    onClicked:{
+                        testfcn ()
+                        writeOperation("*")
+                    }
                 }
             }
 
@@ -158,13 +169,8 @@ Window {
                         text: qsTr("0")
                         onClicked:{
 
-                            if(operation.substr(0)===""){
-                                testfcn ()
-                            }
-                            else{
-                                testfcn ()
-                                writeOperation("0")
-                            }
+                            testfcn ()
+                            writeOperation("0")
 
                         }
                     }
@@ -216,10 +222,10 @@ Window {
                         width: 40
                         height: 40
                         enabled: true
-                        text: qsTr("clc")
+                        text: qsTr(",")
                         onClicked:{
                             testfcn ()
-                            clearOperation()
+                            writeOperation(",")
                         }
                     }
                 }
@@ -290,6 +296,18 @@ Window {
 
                 }
             }
+
+            MyButton{
+                id:clear
+                width: 140
+                height: 40
+                enabled: true
+                text: qsTr("clc")
+                onClicked:{
+                    testfcn ()
+                    clearOperation()
+                }
+             }
 
         }
 
