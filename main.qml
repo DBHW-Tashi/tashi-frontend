@@ -28,27 +28,24 @@ Window {
 
 
 
-    function transmit(){
+    function transmit() {
+        var request = new XMLHttpRequest();
+        var params = JSON.stringify({"exp":operation});
 
-        var HttpClient = function() {
-            this.get = function(aUrl, aCallback) {
-                var anHttpRequest = new XMLHttpRequest();
-                anHttpRequest.onreadystatechange = function() {
-                    if (anHttpRequest.readyState === 4 && anHttpRequest.status === 200)
-                        aCallback(anHttpRequest.responseText);
-                }
+        request.open('POST', 'http://pass.anticitizen.space/compute', true);
+        request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        request.send(params);
 
-                anHttpRequest.open( "GET", aUrl, true );
-                anHttpRequest.send( null );
-            }
+        request.onload = function() {
+            console.log(request.responseText);
+            console.log(JSON.parse(request.responseText).result);
+            showResult(JSON.parse(request.responseText).result);
         }
-        var client = new HttpClient();
-        console.log("test")
-        client.get('http://pass.anticitizen.space/test', function(response) {
-            console.log(response)
-            writeOperation(response)
-        });
-
+    }
+    //ergebnis ausgeben
+    function showResult(result)
+    {
+        operation = operation + '\n'+"=" + result;
     }
     //Write Operationstring via Touch
     function writeOperation(input)
@@ -279,7 +276,7 @@ Window {
                     text: qsTr(",")
                     onClicked:{
                         testfcn ()
-                        writeOperation(",")
+                        writeOperation(".")
                     }
                 }
 
@@ -309,7 +306,7 @@ Window {
                     enabled: true
                     text: qsTr("+")
                     onClicked:{
-                       transmit();
+                        writeOperation("+")
                     }
 
                 }
@@ -342,9 +339,9 @@ Window {
                     enabled: true
                     border.color: "black"
                     text: qsTr("=")
-                    onClicked:{
-                        testfcn ()
-                        splitandpack()
+                    onClicked:{                  
+                         transmit()
+
 
                     }
                 }
