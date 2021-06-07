@@ -14,20 +14,7 @@ Window {
     //benötigte variablen
     property string operation
     property string input
-    //Testfcn um Knopf zu testen
-    function testfcn ()
-    {
-        console.log("-")
-
-    }
     //FCN wird aufgerufen um Eingabe zu verschicken
-    //FCN zerlegt und verpackt die Eingabe Normgerecht
-
-
-    //JSON.stringify(operation)
-
-
-
     function transmit() {
         var request = new XMLHttpRequest();
         var params = JSON.stringify({"exp":operation});
@@ -99,7 +86,6 @@ Window {
                    enabled: true
                    text: qsTr("clc")
                    onClicked:{
-                       testfcn ()
                        clearOperation()
                    }
                 }
@@ -110,7 +96,6 @@ Window {
                    enabled: true
                    text: qsTr("7")
                    onClicked:{
-                       testfcn ()
                        writeOperation("7")
                    }
                }
@@ -121,7 +106,6 @@ Window {
                    enabled: true
                    text: qsTr("4")
                    onClicked:{
-                       testfcn ()
                        writeOperation("4")
                    }
                }
@@ -132,7 +116,6 @@ Window {
                    enabled: true
                    text: qsTr("1")
                    onClicked:{
-                       testfcn ()
                        writeOperation("1")
                    }
                }
@@ -144,11 +127,9 @@ Window {
                    enabled: true
                    text: qsTr("%")
                    onClicked:{
-                       testfcn ()
                        writeOperation("%")
                    }
                }
-
         }
 
         Column{
@@ -163,7 +144,6 @@ Window {
                 enabled: true
                 text: qsTr("/")
                 onClicked:{
-                    testfcn ()
                      writeOperation("/")
                 }
             }
@@ -175,7 +155,6 @@ Window {
                 enabled: true
                 text: qsTr("8")
                 onClicked:{
-                    testfcn ()
                     writeOperation("8")
                 }
             }
@@ -186,7 +165,6 @@ Window {
                 enabled: true
                 text: qsTr("5")
                 onClicked:{
-                    testfcn ()
                     writeOperation("5")
                 }
             }
@@ -198,7 +176,6 @@ Window {
                 enabled: true
                 text: qsTr("2")
                 onClicked:{
-                    testfcn ()
                     writeOperation("2")
                 }
             }
@@ -210,10 +187,7 @@ Window {
                 enabled: true
                 text: qsTr("0")
                 onClicked:{
-
-                    testfcn ()
                     writeOperation("0")
-
                 }
             }
 
@@ -231,7 +205,6 @@ Window {
                     enabled: true
                     text: qsTr("*")
                     onClicked:{
-                        testfcn ()
                         writeOperation("*")
                     }
                 }
@@ -242,7 +215,6 @@ Window {
                     enabled: true
                     text: qsTr("9")
                     onClicked:{
-                        testfcn ()
                         writeOperation("9")
                     }
                 }
@@ -253,7 +225,6 @@ Window {
                     enabled: true
                     text: qsTr("6")
                     onClicked:{
-                        testfcn ()
                         writeOperation("6")
                     }
                 }
@@ -264,7 +235,6 @@ Window {
                     enabled: true
                     text: qsTr("3")
                     onClicked:{
-                        testfcn ()
                         writeOperation("3")
                     }
                 }
@@ -275,7 +245,6 @@ Window {
                     enabled: true
                     text: qsTr(",")
                     onClicked:{
-                        testfcn ()
                         writeOperation(".")
                     }
                 }
@@ -294,7 +263,6 @@ Window {
                     enabled: true
                     text: qsTr("<-")
                     onClicked:{
-                        testfcn ()
                         deleteLastInput()
                     }
                 }
@@ -308,7 +276,6 @@ Window {
                     onClicked:{
                         writeOperation("+")
                     }
-
                 }
                 MyButton{
                     id:subtraktion
@@ -317,7 +284,6 @@ Window {
                     enabled: true
                     text: qsTr("-")
                     onClicked:{
-                        testfcn ()
                         writeOperation("-")
                     }
                 }
@@ -328,7 +294,6 @@ Window {
                     enabled: true
                     text: qsTr("exp")
                     onClicked:{
-                        testfcn ()
                         writeOperation("exp")
                     }
                 }
@@ -341,14 +306,11 @@ Window {
                     text: qsTr("=")
                     onClicked:{                  
                          transmit()
-
-
                     }
                 }
-
             }
-        }
-        }
+          }
+       }
 
 
         Rectangle{
@@ -364,14 +326,8 @@ Window {
                 font.pixelSize: 18
                 padding: 10
                 text: operation
-
             }
-
          }
-
-
     }
-
-
 }
 
